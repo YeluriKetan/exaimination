@@ -49,7 +49,7 @@ export default function Result() {
                       (ques.type === "MCQ"
                         ? ". " +
                           result.qs[index].options[
-                            response.responses[index].ans.charCodeAt(0) - 65
+                            result.as[index].answer.charCodeAt(0) - 65
                           ]
                         : "")}
                 </p>

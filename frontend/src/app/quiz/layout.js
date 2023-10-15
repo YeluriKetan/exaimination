@@ -6,7 +6,61 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import API_ENDPOINT_BASE from "../api";
 
-const API_ENDPOINT = API_ENDPOINT_BASE + "/inputtext";
+// const API_ENDPOINT = API_ENDPOINT_BASE + "/inputtext";
+const DUMMY_DELAY = "https://hub.dummyapis.com/delay?seconds=6";
+const sampleQuesData = [
+  {
+    num: 1,
+    type: "MCQ",
+    text: "What is redshift?",
+    options: [
+      "The change in color of an object due to its motion",
+      "The change in size of an object due to its motion",
+      "The change in shape of an object due to its motion",
+      "The change in temperature of an object due to its motion",
+    ],
+  },
+  {
+    num: 2,
+    type: "MCQ",
+    text: "Who first observed the phenomenon of redshift?",
+    options: [
+      "Albert Einstein",
+      "Isaac Newton",
+      "Edwin Hubble",
+      "Galileo Galilei",
+    ],
+  },
+  {
+    num: 3,
+    type: "MCQ",
+    text: "What is the main use of redshift in astronomy?",
+    options: [
+      "Determining the size of objects in the universe",
+      "Measuring the temperature of objects in the universe",
+      "Calculating the distance of objects in the universe",
+      "Identifying the composition of objects in the universe",
+    ],
+  },
+  {
+    num: 4,
+    type: "TF",
+    text: "Redshift is caused by the Doppler effect.",
+    options: [],
+  },
+  {
+    num: 5,
+    type: "TF",
+    text: "The discovery of redshift led to the development of the Big Bang theory.",
+    options: [],
+  },
+  {
+    num: 6,
+    type: "FR",
+    text: "How does redshift help astronomers determine the distance of objects in the universe?",
+    options: [],
+  },
+];
 
 export default function Layout() {
   const router = useRouter();
@@ -22,12 +76,11 @@ export default function Layout() {
       return;
     }
     async function load() {
-      console.log("Posting to backend", postData);
       return await axios
-        .post(API_ENDPOINT, JSON.parse(postData))
+        // .post(API_ENDPOINT, JSON.parse(postData))
+        .get(DUMMY_DELAY)
         .then((res) => {
-          console.log(res);
-          setQuesData(res.data);
+          setQuesData(sampleQuesData);
         })
         .catch((err) => console.log(err));
     }

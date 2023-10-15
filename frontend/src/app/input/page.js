@@ -5,18 +5,19 @@ import React, { useState, useEffect } from "react";
 export default function Input() {
   const [file, setFile] = useState(null);
   const [fileData, setFileData] = useState("");
-  const [text, setText] = useState("");
-  const [numMCQ, setNumMCQ] = useState(1);
-  const [numTF, setNumTF] = useState(1);
+  const [text, setText] = useState(
+    "On this page, we will be discussing the phenomenon known as redshift. This is an important concept in the field of astronomy and is used to measure the distance of objects in our universe. Redshift occurs when the light coming from an object appears to be shifted towards the red end of the electromagnetic spectrum. This is due to the Doppler effect, where the motion of an object causes a change in the wavelength of the light it emits. To understand redshift, we must first understand the concept of wavelength. Wavelength is the distance between two consecutive peaks or troughs of a wave. When an object is moving away from us, the wavelength of the light it emits appears to be longer, or stretched out. This causes the light to appear more red in color. This phenomenon was first observed by astronomer Edwin Hubble in the early 20th century. He noticed that the light coming from distant galaxies showed a redshift, indicating that these galaxies were moving away from us. This discovery led to the development of the Big Bang theory, which states that the universe is expanding. One important use of redshift is in determining the distance of objects in our universe. By measuring the amount of redshift, astronomers can calculate the speed at which an object is moving away from us, and thus determine its distance. In conclusion, redshift is an important concept in astronomy, helping us understand the motion and distance of objects in our universe. Without this phenomenon, our understanding of the universe and its origins would be greatly limited."
+  );
+  const [numMCQ, setNumMCQ] = useState(3);
+  const [numTF, setNumTF] = useState(2);
   const [numFreeResponse, setNumFreeResponse] = useState(1);
   const router = useRouter();
-  let answer = "1";
 
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    //console.log(selectedFile);
-    setFile(selectedFile);
-  };
+  // const handleFileChange = (e) => {
+  //   const selectedFile = e.target.files[0];
+  //   //console.log(selectedFile);
+  //   setFile(selectedFile);
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +25,8 @@ export default function Input() {
       return;
     }
     const postData = {
-      text: text + "\n" + fileData,
+      // text: text + "\n" + fileData,
+      text: text,
       numMCQ: numMCQ,
       numTF: numTF,
       numFreeResponse: numFreeResponse,
@@ -33,32 +35,32 @@ export default function Input() {
     router.push("/quiz");
   };
 
-  const handleTextChange = (e) => {
-    setText(e.target.value);
-  };
+  // const handleTextChange = (e) => {
+  //   setText(e.target.value);
+  // };
 
-  const handleNumMCQChange = (e) => {
-    setNumMCQ(parseInt(e.target.value));
-  };
+  // const handleNumMCQChange = (e) => {
+  //   setNumMCQ(parseInt(e.target.value));
+  // };
 
-  const handleNumTFChange = (e) => {
-    setNumTF(parseInt(e.target.value));
-  };
+  // const handleNumTFChange = (e) => {
+  //   setNumTF(parseInt(e.target.value));
+  // };
 
-  const handleNumFreeResponse = (e) => {
-    setNumFreeResponse(e.target.value);
-  };
+  // const handleNumFreeResponse = (e) => {
+  //   setNumFreeResponse(e.target.value);
+  // };
 
-  useEffect(() => {
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const fileText = event.target.result;
-        setFileData(fileText);
-      };
-      const result = reader.readAsText(file);
-    }
-  }, [file]);
+  // useEffect(() => {
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = (event) => {
+  //       const fileText = event.target.result;
+  //       setFileData(fileText);
+  //     };
+  //     const result = reader.readAsText(file);
+  //   }
+  // }, [file]);
 
   return (
     <div className="p-4 flex flex-col justify-center h-screen w-screen absolute z-0 bg-superdark min-h-fit overflow-y-auto">
@@ -78,7 +80,7 @@ export default function Input() {
               type="file"
               accept=".txt"
               id="formFile"
-              onChange={handleFileChange}
+              // onChange={handleFileChange}
             />
           </div>
           <div className="mb-4 ">
@@ -86,7 +88,7 @@ export default function Input() {
             <input
               type="number"
               value={numMCQ}
-              onChange={handleNumMCQChange}
+              // onChange={handleNumMCQChange}
               min="0"
               max="20"
               className="w-16 border border-2 p-1 rounded bg-superdark border-purple focus:border-yellow focus:outline-none focus:shadow-focus"
@@ -97,7 +99,7 @@ export default function Input() {
             <input
               type="number"
               value={numTF}
-              onChange={handleNumTFChange}
+              // onChange={handleNumTFChange}
               min="0"
               max="20"
               className="w-16 border border-2 p-1 rounded bg-superdark border-purple focus:border-yellow focus:outline-none focus:shadow-focus"
@@ -108,7 +110,7 @@ export default function Input() {
             <input
               type="number"
               value={numFreeResponse}
-              onChange={handleNumFreeResponse}
+              // onChange={handleNumFreeResponse}
               className="w-16 border border-2 p-1 rounded bg-superdark border-purple focus:border-yellow focus:outline-none focus:shadow-focus"
               min="0"
               max="20"
@@ -118,7 +120,7 @@ export default function Input() {
         <div className="w-1/2 flex items-center">
           <textarea
             value={text}
-            onChange={handleTextChange}
+            // onChange={handleTextChange}
             placeholder="Or paste your text here..."
             rows="20"
             className="mb-4 p-2 w-[90%] border border-2 rounded bg-superdark text-gray border-purple focus:border-yellow focus:outline-none focus:shadow-focus"
