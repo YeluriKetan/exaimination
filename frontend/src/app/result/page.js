@@ -24,7 +24,7 @@ export default function Result() {
         <>
           {result.qs.map((ques, index) => {
             return (
-              <div className="my-4 w-[90%]">
+              <div key={index} className="my-4 w-[90%]">
                 <p className="text-purple my-2">
                   {index + 1}. {ques.text}
                 </p>

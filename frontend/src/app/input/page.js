@@ -69,7 +69,7 @@ export default function Input() {
         <div className="w-1/2 pr-4 flex flex-col items-center justify-center gap-4">
           <div className="flex flex-col my-10">
             <label
-              for="formFile"
+              htmlFor="formFile"
               className="mb-2 inline-block text-neutral-700 dark:text-neutral-200"
             >
               Upload .txt

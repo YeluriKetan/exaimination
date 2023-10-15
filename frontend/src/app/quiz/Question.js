@@ -25,7 +25,10 @@ function MCQ({ num, ques, update }) {
       </h2>
       {options.map((optionText, index) => {
         return (
-          <div className="flex flex-row w-fit min-h-fit h-10 justify-center items-center">
+          <div
+            key={index}
+            className="flex flex-row w-fit min-h-fit h-10 justify-center items-center"
+          >
             <input
               type="radio"
               name={num}
@@ -49,7 +52,10 @@ function TF({ num, ques, update }) {
       </h2>
       {["True", "False"].map((optionText, index) => {
         return (
-          <div className="flex flex-row w-fit min-h-fit h-10 justify-center items-center">
+          <div
+            key={index}
+            className="flex flex-row w-fit min-h-fit h-10 justify-center items-center"
+          >
             <input
               type="radio"
               name={num}
